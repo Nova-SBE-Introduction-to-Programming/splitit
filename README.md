@@ -4,9 +4,9 @@ SplitIt is a tiny Splitwise-style app for flatmates and trips: a group has membe
 
 ## Run it
 
+Unzip the project, open the folder in your editor, open a terminal inside it, then:
+
 ```
-git clone <this repo>
-cd splitit
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
