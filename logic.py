@@ -36,7 +36,7 @@ def get_group_expenses(group_id):
 
 def group_title(group):
     """Return the text shown as the big heading at the top of a group page."""
-    return "Group " + group["id"]
+    return group["name"]
 
 
 def is_valid_name(name):
@@ -91,13 +91,28 @@ def compute_balances(group_id):
     for expense in get_group_expenses(group_id):
         amount = float(expense["amount"])
         payer_id = expense["payer_id"]
-        # The payer already paid, so the bill is split between everybody else.
-        share = amount / (len(members) - 1)
+        # The bill is split between everybody, the payer included; the payer then gets the whole amount back.
+        share = amount / len(members)
         for member in members:
-            if member["id"] != payer_id:
-                balances[member["id"]] -= share
+            balances[member["id"]] -= share
         balances[payer_id] += amount
     return balances
+
+
+def balance_lines(group_id):
+    """Return one sentence per member saying what they are owed, what they owe, or that they are settled."""
+    balances = compute_balances(group_id)
+    lines = []
+    for member in get_group_members(group_id):
+        balance = round(balances[member["id"]], 2)
+        amount = "€" + format(abs(balance), ".2f")
+        if balance > 0:
+            lines.append(member["name"] + " is owed " + amount)
+        elif balance < 0:
+            lines.append(member["name"] + " owes " + amount)
+        else:
+            lines.append(member["name"] + " is settled up")
+    return lines
 
 
 def expense_rows(group_id):
