@@ -1,4 +1,4 @@
-"""Reset the live database: copy every CSV from seed/ over data/.  Run it with:  python seed.py"""
+"""Reset the live database: copy every CSV from seed/ over data/.  Run it with:  uv run python seed.py"""
 
 import os
 import shutil

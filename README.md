@@ -4,23 +4,20 @@ SplitIt is a tiny Splitwise-style app for flatmates and trips: a group has membe
 
 ## Run it
 
-Unzip the project, open the folder in your editor, open a terminal inside it, then:
+Unzip the project, open the folder in Codex, open a terminal inside the folder, then:
 
 ```
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-streamlit run app.py
+uv run streamlit run app.py
 ```
 
-Your browser opens on the groups list. Click **Open** on a group, add an expense, then look at `data/expenses.csv` in VS Code: a new line appeared. That folder *is* the database.
+That one command installs Python and the libraries the first time (a minute), then starts the app. No `uv`? Install it once — macOS: `curl -LsSf https://astral.sh/uv/install.sh | sh`, Windows: `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"` — and open a new terminal. Or ask Codex to run the app; it knows how (see `AGENTS.md`).
 
 ## Reset the data
 
 Broke something? Deleted the wrong member? Run
 
 ```
-python seed.py
+uv run python seed.py
 ```
 
 It copies the pristine CSVs from `seed/` over `data/` and tells you what it restored.
@@ -28,7 +25,7 @@ It copies the pristine CSVs from `seed/` over `data/` and tells you what it rest
 ## Run the tests
 
 ```
-pytest
+uv run pytest
 ```
 
 Some tests fail on purpose. They describe features not built yet and bugs not fixed yet. That's your job.
@@ -48,8 +45,9 @@ tests/test_bugs.py      red on purpose: what the app SHOULD do once bugs 000-003
 tests/test_feature_*.py red on purpose: what the app SHOULD do once features 1-3 are built
 specs/              one spec per feature, written by the product manager
 issues/             one bug report per planted bug, written by users
-ONBOARDING.md       the week-1 question sheet: answer it in this file
-requirements.txt    the two libraries we use, with their versions
+ONBOARDING.md       the onboarding question sheet: answer it in this file
+pyproject.toml      the two libraries we use, with their versions (uv reads this)
+AGENTS.md           notes for Codex: how to run things, how to help a beginner
 ```
 
 Good to know: everything that comes out of a CSV file is text. Ids are `"3"`, not `3`; amounts are `"30.00"`, not `30.0`. Convert with `int()` or `float()` when you need numbers.

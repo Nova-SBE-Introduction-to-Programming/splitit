@@ -1,6 +1,6 @@
 """Feature 2: every expense has a category, and the group page shows a total per category.
 
-RED until the feature is built. Remember to add the column to the CSVs in seed/ and run python seed.py.
+RED until the feature is built. Remember to add the column to the CSVs in seed/ and run uv run python seed.py.
 """
 
 import db

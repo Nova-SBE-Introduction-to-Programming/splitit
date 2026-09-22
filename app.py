@@ -1,4 +1,4 @@
-"""SplitIt: the Streamlit screens. Start the app with:  streamlit run app.py"""
+"""SplitIt: the Streamlit screens. Start the app with:  uv run streamlit run app.py"""
 
 import streamlit as st
 

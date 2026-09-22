@@ -13,7 +13,7 @@ Every expense gets a `category`, chosen from a fixed list when the expense is cr
 - [ ] `add_expense(...)` accepts a `category` argument and saves it with the expense.
 - [ ] A new function `category_totals(group_id)` returns a dict `{category: total}` with the total amount spent per category in that group. Categories with no expenses do not appear.
 
-Adding a column means touching three places: `COLUMNS` in `db.py`, the CSVs in `seed/` (add the column and a category to every line), and then `python seed.py` so that `data/` gets the new column too. Do not edit `data/` by hand.
+Adding a column means touching three places: `COLUMNS` in `db.py`, the CSVs in `seed/` (add the column and a category to every line), and then `uv run python seed.py` so that `data/` gets the new column too. Do not edit `data/` by hand.
 
 ## Out of scope
 
@@ -25,5 +25,5 @@ Adding a column means touching three places: `COLUMNS` in `db.py`, the CSVs in `
 
 - `pytest tests/test_feature_2.py` is green.
 - The Add expense form has a category selectbox, and the group page shows a total per category.
-- `python seed.py` runs cleanly and the app still works after it.
+- `uv run python seed.py` runs cleanly and the app still works after it.
 - The work is on a branch called `feature-2-categories` and pushed.

@@ -10,4 +10,4 @@ Francisco disappears from the members list and the page carries on as normal. I 
 
 ## What actually happened
 
-The page went red with a long error message. Something about a `KeyError: '7'`. I can't open that group at all any more, not even to add the rest of the members back. The only way I found to get it working again was to run `python seed.py`, which of course wiped everything else I had typed in.
+The page went red with a long error message. Something about a `KeyError: '7'`. I can't open that group at all any more, not even to add the rest of the members back. The only way I found to get it working again was to run `uv run python seed.py`, which of course wiped everything else I had typed in.

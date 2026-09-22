@@ -28,5 +28,5 @@ The Add expense form should offer a percentage per member (all empty = equal spl
 
 - `pytest tests/test_feature_3.py` is green.
 - The form refuses a split that does not add up to 100, with a clear message.
-- `python seed.py` runs cleanly and the app still works after it.
+- `uv run python seed.py` runs cleanly and the app still works after it.
 - The work is on a branch called `feature-3-unequal-split` and pushed.
